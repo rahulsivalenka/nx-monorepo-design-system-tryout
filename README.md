@@ -90,17 +90,29 @@ And join the Nx community:
 npx create-nx-workspace nx-monorepo-design-system-tryout --package-manager=pnpm --preset=react-monorepo
 
 # Add a button component as react library using 
+# Can use any project structure for the packages. Ex. instead of libs/components/button we can use packages/components/button or packages/button
+# Change options based on your test runner and bundler
 nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup
 
+# Add storybook to button package
+# refer: https://nx.dev/recipes/storybook/overview-react#generate-storybook-configuration-for-a-react-project
+nx g @nx/react:storybook-configuration button
+
+# Run storybook for a package
+# nx storybook <package-name>
+nx storybook button 
+
+# Add a host storybook app which 
 
 ```
 
 ## References
 
 - https://blog.nrwl.io/build-your-design-system-with-storybook-nx-e3bde4087ad8
+- https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#sharing-code-with-local-libraries
 - https://nx.dev/recipes/storybook/overview-react
 - https://nx.dev/recipes/storybook/one-storybook-for-all
-- https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#sharing-code-with-local-libraries
+
 
 
 https://github.com/Leizhenpeng/zsh-plugin-pnpm
