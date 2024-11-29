@@ -1,5 +1,82 @@
 # NxMonorepoDesignSystemTryout
 
+## Commands run
+
+```bash
+# Create a new nx workspace with monorepo preset. Skip --package-manager if using npm
+npx create-nx-workspace nx-monorepo-design-system-tryout --package-manager=pnpm --preset=react-monorepo
+
+# If the name of the app is given as base-app, we can run it using
+nx serve base-app
+
+# Add a button component as react library using 
+# Can use any project structure for the packages. Ex. instead of libs/components/button we can use packages/components/button or packages/button
+# Change options based on your test runner and bundler
+nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup
+
+# Add storybook to button package
+# refer: https://nx.dev/recipes/storybook/overview-react#generate-storybook-configuration-for-a-react-project
+nx g @nx/react:storybook-configuration button
+
+# Run storybook for a package
+# nx storybook <package-name>
+nx storybook button 
+
+# Add a host storybook app which will act as a shell/host for all our stories
+# refer: https://nx.dev/recipes/storybook/one-storybook-for-all#generate-a-new-library-that-will-host-our-storybook-instance
+nx g @nx/react:library storybook-host --bundler=none --unitTestRunner=none --projectNameAndRootFormat=as-provided
+
+# Configure storybook-host
+nx g @nx/storybook:configuration storybook-host --interactionTests=true --uiFramework=@storybook/react-vite
+
+# Run storybook-host
+nx storybook storybook-host
+
+# Change an existing package to publishable package
+# Not possible directly, should backup the package code before running below:
+# Also should remove code that depends of this package
+nx g @nx/workspace:remove button
+
+# Create a publishable package
+nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup --publishable --importPath=@nx-monorepo-design-system-tryout/button
+
+# Generate a hook
+nx g @nx/react:hook libs/hooks/use-viewport-size/src/lib/use-viewport-size --name=useViewportSize
+
+# Release versions
+# nx release --dry-run to test what would be the output
+# First release
+nx release --first-release
+
+# Subsequent releases
+nx release
+
+# Specific package
+nx release button
+
+# Generate a tarball
+nx release 
+```
+
+To publish to custom npm registry refer: https://nx.dev/recipes/nx-release/configure-custom-registries
+
+## References
+
+- https://blog.nrwl.io/build-your-design-system-with-storybook-nx-e3bde4087ad8
+- https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#sharing-code-with-local-libraries
+- https://nx.dev/recipes/storybook/overview-react
+- https://nx.dev/recipes/storybook/one-storybook-for-all
+- https://blog.nrwl.io/publishing-react-libraries-made-easy-d5b3d013deba
+- https://nx.dev/features/manage-releases
+
+
+
+https://github.com/Leizhenpeng/zsh-plugin-pnpm
+
+---
+---
+
+
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
@@ -80,76 +157,3 @@ And join the Nx community:
 - [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
 - [Our Youtube channel](https://www.youtube.com/@nxdevtools)
 - [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
----
-## Commands run
-
-```bash
-# Create a new nx workspace with monorepo preset. Skip --package-manager if using npm
-npx create-nx-workspace nx-monorepo-design-system-tryout --package-manager=pnpm --preset=react-monorepo
-
-# If the name of the app is given as base-app, we can run it using
-nx serve base-app
-
-# Add a button component as react library using 
-# Can use any project structure for the packages. Ex. instead of libs/components/button we can use packages/components/button or packages/button
-# Change options based on your test runner and bundler
-nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup
-
-# Add storybook to button package
-# refer: https://nx.dev/recipes/storybook/overview-react#generate-storybook-configuration-for-a-react-project
-nx g @nx/react:storybook-configuration button
-
-# Run storybook for a package
-# nx storybook <package-name>
-nx storybook button 
-
-# Add a host storybook app which will act as a shell/host for all our stories
-# refer: https://nx.dev/recipes/storybook/one-storybook-for-all#generate-a-new-library-that-will-host-our-storybook-instance
-nx g @nx/react:library storybook-host --bundler=none --unitTestRunner=none --projectNameAndRootFormat=as-provided
-
-# Configure storybook-host
-nx g @nx/storybook:configuration storybook-host --interactionTests=true --uiFramework=@storybook/react-vite
-
-# Run storybook-host
-nx storybook storybook-host
-
-# Change an existing package to publishable package
-# Not possible directly, should backup the package code before running below:
-# Also should remove code that depends of this package
-nx g @nx/workspace:remove button
-
-# Create a publishable package
-nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup --publishable --importPath=@nx-monorepo-design-system-tryout/button
-
-# Generate a hook
-nx g @nx/react:hook libs/hooks/use-viewport-size/src/lib/use-viewport-size --name=useViewportSize
-
-# Release versions
-# nx release --dry-run to test what would be the output
-# First release
-nx release --first-release
-
-# Subsequent releases
-nx release
-
-# Specific package
-nx release button
-
-# Generate a tarball
-nx release 
-```
-
-## References
-
-- https://blog.nrwl.io/build-your-design-system-with-storybook-nx-e3bde4087ad8
-- https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#sharing-code-with-local-libraries
-- https://nx.dev/recipes/storybook/overview-react
-- https://nx.dev/recipes/storybook/one-storybook-for-all
-- https://blog.nrwl.io/publishing-react-libraries-made-easy-d5b3d013deba
-- https://nx.dev/features/manage-releases
-
-
-
-https://github.com/Leizhenpeng/zsh-plugin-pnpm
