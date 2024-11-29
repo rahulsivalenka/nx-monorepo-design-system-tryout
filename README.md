@@ -116,6 +116,9 @@ nx storybook storybook-host
 # Not possible directly, should backup the package code before running below:
 # Also should remove code that depends of this package
 nx g @nx/workspace:remove button
+
+# Create a publishable package
+nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup --publishable --importPath=@nx-monorepo-design-system-tryout/button
 ```
 
 ## References

@@ -1,7 +1,10 @@
+const baseConfig = require('../../eslint.base.config.js');
 const cypress = require('eslint-plugin-cypress/flat');
 const baseConfig = require('../../eslint.config.js');
 
 module.exports = [
+  ...baseConfig,
+
   cypress.configs['recommended'],
 
   ...baseConfig,
