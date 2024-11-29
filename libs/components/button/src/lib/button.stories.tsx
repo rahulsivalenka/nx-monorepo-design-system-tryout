@@ -21,3 +21,13 @@ export const Heading: Story = {
     expect(canvas.getByText(/Welcome to Button from @nx-monorepo-design-system-tryout\/button package!/gi)).toBeTruthy();
   },
 };
+
+export const CustomLabel: Story = {
+  args: {
+    label: 'Custom Label'
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText(/Custom Label/gi)).toBeTruthy();
+  },
+}
