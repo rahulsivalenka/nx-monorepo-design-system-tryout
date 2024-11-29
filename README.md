@@ -119,6 +119,9 @@ nx g @nx/workspace:remove button
 
 # Create a publishable package
 nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup --publishable --importPath=@nx-monorepo-design-system-tryout/button
+
+# Generate a hook
+nx g @nx/react:hook libs/hooks/use-viewport-size/src/lib/use-viewport-size --name=useViewportSize
 ```
 
 ## References
