@@ -1,15 +1,23 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface UseViewportSize {
-  count: number;
-  increment: () => void;
+  width: number;
+  height: number;
 }
-
+ 
 export function useViewportSize(): UseViewportSize {
-  const [count, setCount] = useState(0);
-  const increment = useCallback(() => setCount((x) => x + 1), []);
-  return { count, increment };
+  const getSize = () => {
+    return { width: window.innerWidth, height: window.innerHeight };
+  };
+ 
+  const [size, setSize] = useState(getSize);
+ 
+  useEffect(() => {
+    const handleResize = () => setSize(getSize());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [getSize]);
+ 
+  return size;
 }
-
-export default useViewportSize;
