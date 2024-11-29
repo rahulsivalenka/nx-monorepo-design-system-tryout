@@ -106,7 +106,8 @@ nx storybook button
 # refer: https://nx.dev/recipes/storybook/one-storybook-for-all#generate-a-new-library-that-will-host-our-storybook-instance
 nx g @nx/react:library storybook-host --bundler=none --unitTestRunner=none --projectNameAndRootFormat=as-provided
 
-
+# Configure storybook-host
+nx g @nx/storybook:configuration storybook-host --interactionTests=true --uiFramework=@storybook/react-vite
 ```
 
 ## References
