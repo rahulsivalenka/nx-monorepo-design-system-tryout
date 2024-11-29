@@ -111,6 +111,11 @@ nx g @nx/storybook:configuration storybook-host --interactionTests=true --uiFram
 
 # Run storybook-host
 nx storybook storybook-host
+
+# Change an existing package to publishable package
+# Not possible directly, should backup the package code before running below:
+# Also should remove code that depends of this package
+nx g @nx/workspace:remove button
 ```
 
 ## References
@@ -119,6 +124,7 @@ nx storybook storybook-host
 - https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#sharing-code-with-local-libraries
 - https://nx.dev/recipes/storybook/overview-react
 - https://nx.dev/recipes/storybook/one-storybook-for-all
+- https://blog.nrwl.io/publishing-react-libraries-made-easy-d5b3d013deba
 
 
 
