@@ -125,6 +125,20 @@ nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=ro
 
 # Generate a hook
 nx g @nx/react:hook libs/hooks/use-viewport-size/src/lib/use-viewport-size --name=useViewportSize
+
+# Release versions
+# nx release --dry-run to test what would be the output
+# First release
+nx release --first-release
+
+# Subsequent releases
+nx release
+
+# Specific package
+nx release button
+
+# Generate a tarball
+nx release 
 ```
 
 ## References
@@ -134,6 +148,7 @@ nx g @nx/react:hook libs/hooks/use-viewport-size/src/lib/use-viewport-size --nam
 - https://nx.dev/recipes/storybook/overview-react
 - https://nx.dev/recipes/storybook/one-storybook-for-all
 - https://blog.nrwl.io/publishing-react-libraries-made-easy-d5b3d013deba
+- https://nx.dev/features/manage-releases
 
 
 

@@ -21,6 +21,19 @@
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "nxCloudId": "674938ef1f541e512bcd2314",
+  "release": {
+    "projectsRelationship": "independent",
+    "changelog": {
+      "projectChangelogs": {
+        "renderOptions": {
+          "authors": true,
+          "commitReferences": true,
+          "versionTitleDate": true
+        }
+      }
+    },
+    "projects": ["*", "!storybook-host", "!@nx-monorepo-design-system-tryout/source", "!base-app", "!base-app-e2e"]
+  },
   "plugins": [
     {
       "plugin": "@nx/vite/plugin",
