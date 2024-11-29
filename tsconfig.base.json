@@ -20,6 +20,9 @@
       ],
       "@nx-monorepo-design-system-tryout/storybook-host": [
         "storybook-host/src/index.ts"
+      ],
+      "@nx-monorepo-design-system-tryout/use-viewport-size": [
+        "libs/hooks/use-viewport-size/src/index.ts"
       ]
     }
   },
