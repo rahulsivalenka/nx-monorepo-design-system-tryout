@@ -108,6 +108,9 @@ nx g @nx/react:library storybook-host --bundler=none --unitTestRunner=none --pro
 
 # Configure storybook-host
 nx g @nx/storybook:configuration storybook-host --interactionTests=true --uiFramework=@storybook/react-vite
+
+# Run storybook-host
+nx storybook storybook-host
 ```
 
 ## References
