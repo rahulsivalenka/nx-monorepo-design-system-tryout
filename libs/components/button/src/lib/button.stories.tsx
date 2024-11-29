@@ -5,7 +5,7 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof Button> = {
   component: Button,
-  title: 'Button',
+  title: 'Components/Button',
 };
 export default meta;
 type Story = StoryObj<typeof Button>;
@@ -18,6 +18,16 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/Welcome to Button!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Welcome to Button from @nx-monorepo-design-system-tryout\/button package!/gi)).toBeTruthy();
   },
 };
+
+export const CustomLabel: Story = {
+  args: {
+    label: 'Custom Label'
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText(/Custom Label/gi)).toBeTruthy();
+  },
+}
