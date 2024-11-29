@@ -17,6 +17,9 @@
     "paths": {
       "@nx-monorepo-design-system-tryout/button": [
         "libs/components/button/src/index.ts"
+      ],
+      "@nx-monorepo-design-system-tryout/storybook-host": [
+        "storybook-host/src/index.ts"
       ]
     }
   },

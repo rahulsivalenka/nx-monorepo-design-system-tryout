@@ -102,7 +102,10 @@ nx g @nx/react:storybook-configuration button
 # nx storybook <package-name>
 nx storybook button 
 
-# Add a host storybook app which 
+# Add a host storybook app which will act as a shell/host for all our stories
+# refer: https://nx.dev/recipes/storybook/one-storybook-for-all#generate-a-new-library-that-will-host-our-storybook-instance
+nx g @nx/react:library storybook-host --bundler=none --unitTestRunner=none --projectNameAndRootFormat=as-provided
+
 
 ```
 
