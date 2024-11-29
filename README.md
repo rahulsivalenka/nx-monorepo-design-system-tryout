@@ -80,3 +80,27 @@ And join the Nx community:
 - [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
 - [Our Youtube channel](https://www.youtube.com/@nxdevtools)
 - [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+
+---
+## Commands run
+
+```bash
+# Create a new nx workspace with monorepo preset. Skip --package-manager if using npm
+npx create-nx-workspace nx-monorepo-design-system-tryout --package-manager=pnpm --preset=react-monorepo
+
+# Add a button component as react library using 
+nx g @nx/react:library libs/components/button --unitTestRunner=jest --bundler=rollup
+
+
+```
+
+## References
+
+- https://blog.nrwl.io/build-your-design-system-with-storybook-nx-e3bde4087ad8
+- https://nx.dev/recipes/storybook/overview-react
+- https://nx.dev/recipes/storybook/one-storybook-for-all
+- https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#sharing-code-with-local-libraries
+
+
+https://github.com/Leizhenpeng/zsh-plugin-pnpm
