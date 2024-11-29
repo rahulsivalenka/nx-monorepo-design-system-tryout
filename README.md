@@ -89,6 +89,9 @@ And join the Nx community:
 # Create a new nx workspace with monorepo preset. Skip --package-manager if using npm
 npx create-nx-workspace nx-monorepo-design-system-tryout --package-manager=pnpm --preset=react-monorepo
 
+# If the name of the app is given as base-app, we can run it using
+nx serve base-app
+
 # Add a button component as react library using 
 # Can use any project structure for the packages. Ex. instead of libs/components/button we can use packages/components/button or packages/button
 # Change options based on your test runner and bundler
