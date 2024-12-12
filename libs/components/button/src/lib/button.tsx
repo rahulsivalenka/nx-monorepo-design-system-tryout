@@ -13,7 +13,7 @@ export type ButtonProps = {
 export function Button({ label }: ButtonProps) {
   return (
     <div className={styles['container']}>
-      <h1>{label || 'Welcome to Button component from @nx-monorepo-design-system-tryout/button package!!'}</h1>
+      <h1>{label || 'Welcome to Button from @nx-monorepo-design-system-tryout/button package!'}</h1>
     </div>
   );
 }
